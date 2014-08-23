@@ -12,6 +12,7 @@ package
 		private var container:Sprite;
 		private var mouth:Sprite;
 		private const size:int = 10;
+		private var _mouthOpened:Boolean;
 		
 		public function PacMan()
 		{
@@ -34,16 +35,19 @@ package
 			mouth.blendMode = BlendMode.ERASE;
 			container.addChild(mouth);
 			
+			_mouthOpened = false;
 		}
 		
 		public function openMouth():void
 		{
 			mouth.visible = true;
+			_mouthOpened = true;
 		}
 		
 		public function closeMouth():void
 		{
 			mouth.visible = false;
+			_mouthOpened = false;
 		}
 		
 		override public function set rotation(value:Number):void
@@ -54,6 +58,11 @@ package
 		override public function get rotation():Number
 		{
 			return container.rotation;
+		}
+		
+		public function get mouthOpened():Boolean 
+		{
+			return _mouthOpened;
 		}
 		
 	}
